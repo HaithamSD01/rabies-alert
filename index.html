@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="عضك حيوان؟ اعرف درجة الخطر وأين تتلقى لقاح السعار مجاناً بالمغرب — بالعربية والدارجة والفرنسية.">
+<meta property="og:title" content="السعار — تصرف بسرعة">
+<meta property="og:description" content="أداة توعوية: تقييم الخطر بعد عضة حيوان، أقرب مراكز اللقاح، ورقم الإسعاف 141.">
+<meta name="theme-color" content="#0B5D52">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💉</text></svg>">
+<title>السعار: تصرف بسرعة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F6F1; --surface: #FFFFFF; --ink: #17221C; --ink-soft: #4B564F; --line: #DCE0D7;
+    --teal: #0B5D52; --red: #B3261E; --red-bg: #FBEAE9; --amber: #96650A; --amber-bg: #FBF1DE;
+    --green: #2F7D4F; --green-bg: #E9F4EC; --radius: 10px;
+    font-size: 17px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10160F; --surface: #182119; --ink: #F0F3EE; --ink-soft: #AEB8A9; --line: #2C362A;
+      --teal: #43A491; --red: #FF9A8F; --red-bg: #3A1815; --amber: #E4B152; --amber-bg: #362A0E;
+      --green: #86D6A2; --green-bg: #14301F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10160F; --surface: #182119; --ink: #F0F3EE; --ink-soft: #AEB8A9; --line: #2C362A;
+    --teal: #43A491; --red: #FF9A8F; --red-bg: #3A1815; --amber: #E4B152; --amber-bg: #362A0E;
+    --green: #86D6A2; --green-bg: #14301F;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: 'Cairo', system-ui, sans-serif; }
+  body { line-height: 1.6; }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: 12px 16px; padding-top: calc(12px + env(safe-area-inset-top, 0px));
+    border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg); z-index: 10;
+  }
+  .brand { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1 1 auto; }
+  .brand-mark { width: 32px; height: 32px; border-radius: 8px; background: var(--teal); color: #fff;
+    display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .brand-name { font-weight: 700; font-size: 14px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lang-toggle { display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; flex-shrink: 0; }
+  .lang-toggle button { border: none; background: transparent; color: var(--ink-soft); font-family: inherit;
+    font-size: 12px; font-weight: 600; padding: 7px 10px; cursor: pointer; white-space: nowrap; }
+  .lang-toggle button.active { background: var(--teal); color: #fff; }
+
+  main { max-width: 560px; margin: 0 auto; padding: 20px 16px calc(110px + env(safe-area-inset-bottom, 0px)); }
+  h1 { font-size: 25px; font-weight: 800; margin: 4px 0 6px; }
+  .subtitle { color: var(--ink-soft); font-size: 15px; margin: 0 0 18px; }
+
+  .hero { background: var(--red-bg); border: 1px solid color-mix(in srgb, var(--red) 35%, transparent);
+    border-inline-start: 5px solid var(--red); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; }
+  .hero-label { font-size: 12.5px; font-weight: 700; color: var(--red); margin: 0 0 6px; }
+  .hero-text { margin: 0; font-size: 15.5px; font-weight: 500; }
+  .emergency-note { font-size: 13.5px; color: var(--amber); background: var(--amber-bg);
+    border-radius: 8px; padding: 11px 13px; margin: 0 0 16px; line-height: 1.55; }
+
+  .btn { display: block; width: 100%; text-align: center; background: var(--teal); color: #fff; border: none;
+    border-radius: var(--radius); font-family: inherit; font-size: 16px; font-weight: 700; padding: 14px 18px;
+    cursor: pointer; margin-top: 8px; text-decoration: none; }
+  .btn:active { opacity: 0.85; }
+  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--line); font-weight: 600; font-size: 14.5px; padding: 11px 16px; }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin: 16px 0 14px; }
+  .q-title { font-size: 18px; font-weight: 700; margin: 0 0 14px; }
+  .q-options { display: flex; flex-direction: column; gap: 10px; }
+  .q-option { display: block; width: 100%; text-align: start; background: var(--surface); border: 1px solid var(--line);
+    border-radius: var(--radius); font-family: inherit; font-size: 15px; color: var(--ink); padding: 13px 15px; cursor: pointer; line-height: 1.5; }
+  .q-option:active { border-color: var(--teal); }
+  .progress { display: flex; gap: 6px; margin-bottom: 6px; }
+  .progress span { height: 4px; flex: 1; border-radius: 2px; background: var(--line); }
+  .progress span.done { background: var(--teal); }
+
+  .result-badge { display: inline-block; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 999px; margin-bottom: 10px; }
+  .result-badge.low { background: var(--green-bg); color: var(--green); }
+  .result-badge.mod { background: var(--amber-bg); color: var(--amber); }
+  .result-badge.high { background: var(--red-bg); color: var(--red); }
+  .result-title { font-size: 21px; font-weight: 800; margin: 0 0 10px; }
+  .result-text { font-size: 15.5px; margin: 0 0 8px; }
+  .note { font-size: 14px; color: var(--ink-soft); background: var(--bg); border-radius: 8px; padding: 11px 13px; margin-top: 12px; }
+
+  .field { display: block; width: 100%; font-family: inherit; font-size: 15px; color: var(--ink); background: var(--bg);
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+  .field:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+
+  .place { padding: 13px 0; border-bottom: 1px solid var(--line); }
+  .place:last-of-type { border-bottom: none; }
+  .place-name { font-weight: 700; font-size: 15px; margin: 0 0 2px; }
+  .place-sub { font-size: 14px; color: var(--ink-soft); margin: 0; }
+  .place-verify { font-size: 12.5px; color: var(--amber); margin: 3px 0 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .pill { display: inline-flex; align-items: center; gap: 4px; font-family: inherit; font-size: 13.5px; font-weight: 700;
+    color: var(--teal); background: transparent; text-decoration: none; border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 13px; cursor: pointer; }
+  .pill.primary { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+  details.card > summary { font-size: 17px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  details.card > summary::-webkit-details-marker { display: none; }
+  details.card > summary::after { content: "＋"; color: var(--teal); font-weight: 800; }
+  details.card[open] > summary::after { content: "－"; }
+  .steps { margin: 14px 0 0; padding: 0; list-style: none; counter-reset: s; }
+  .steps li { counter-increment: s; position: relative; padding-inline-start: 38px; margin-bottom: 14px; font-size: 14.5px; }
+  .steps li::before { content: counter(s); position: absolute; inset-inline-start: 0; top: 1px; width: 26px; height: 26px;
+    border-radius: 50%; background: var(--teal); color: #fff; font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; }
+  .source { font-size: 12px; color: var(--ink-soft); margin: 4px 0 0; }
+  .dose-box { background: var(--bg); border-radius: 8px; padding: 14px; margin-top: 14px; }
+  .dose-box label { font-size: 14px; font-weight: 700; display: block; margin-bottom: 6px; }
+  .dose-row { display: flex; justify-content: space-between; gap: 10px; font-size: 14px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .dose-row:last-child { border-bottom: none; }
+  .dose-row b { color: var(--teal); white-space: nowrap; }
+
+  .section-title { font-size: 13px; font-weight: 700; color: var(--ink-soft); margin: 26px 0 10px; }
+  .fact { font-size: 14.5px; margin: 0 0 10px; padding-inline-start: 18px; position: relative; }
+  .fact::before { content: "•"; position: absolute; inset-inline-start: 0; color: var(--teal); font-weight: 700; }
+  .disclaimer { font-size: 12.5px; color: var(--ink-soft); margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); }
+
+  .sos-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--bg);
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
+  .sos-bar a { display: flex; align-items: center; justify-content: center; gap: 8px; max-width: 560px; margin: 0 auto;
+    background: var(--red); color: #fff; text-decoration: none; font-weight: 800; font-size: 16px;
+    border-radius: var(--radius); padding: 13px 16px; }
+  #toast { position: fixed; left: 50%; bottom: calc(90px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%) translateY(10px); background: var(--ink); color: var(--surface); font-size: 14px; font-weight: 600;
+    padding: 10px 18px; border-radius: 999px; opacity: 0; transition: opacity .2s, transform .2s; pointer-events: none; z-index: 50; white-space: nowrap; }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-mark">💉</div>
+    <div class="brand-name" id="brandName"></div>
+  </div>
+  <div class="lang-toggle">
+    <button id="btnAr" onclick="setLang('ar')">ع</button>
+    <button id="btnDa" onclick="setLang('da')">الدارجة</button>
+    <button id="btnFr" onclick="setLang('fr')">FR</button>
+  </div>
+</div>
+
+<main id="app"></main>
+
+<div class="sos-bar"><a href="tel:141" id="sosLink">🚑 <span id="sosText"></span></a></div>
+<div id="toast"></div>
+
+<script>
+// ─── CONFIG ──────────────────────────────────────────────────────────────
+// Inside Claude artifacts, links to external sites (Google Maps) are blocked
+// by the platform. When you host this page yourself (Vercel, Netlify, GitHub
+// Pages...), set this to true: every place then gets a "route & travel time"
+// button, and the "other city" buttons open the map directly.
+const EXTERNAL_LINKS = true;
+
+// ─── PLACES (verified sources noted) ─────────────────────────────────────
+// Casablanca: national rabies situation report provided by the user.
+// Mohammedia BMH: Telecontact public directory (single source → flagged).
+const PLACES = {
+  casa: [
+    { name: { ar: 'معهد باستور المغرب — المركز المرجعي للسعار', fr: 'Institut Pasteur du Maroc — centre de référence' },
+      addr: { ar: '1 ساحة لويس باستور', fr: '1 Place Louis Pasteur' },
+      hours: { ar: 'أيام العمل + السبت صباحاً', da: 'أيام الخدمة + السبت فالصباح', fr: 'Jours ouvrables + samedi matin' },
+      tel: '0522434470', telLabel: '05 22 43 44 70', q: 'Institut Pasteur du Maroc, Casablanca' },
+    { name: { ar: 'مستشفى ابن رشد (CHU) — مستعجلات', fr: 'CHU Ibn Rochd — urgences' },
+      addr: { ar: '8 شارع لحسن العرجون، كازا أنفا', fr: '8 rue Lahcen El Arjoune, Casa Anfa' },
+      tel: '0522481010', telLabel: '05 22 48 10 10', q: 'CHU Ibn Rochd, Casablanca' },
+    { name: { ar: 'مستشفى محمد السقاط — عين الشق', fr: 'Hôpital Mohammed Sekkat — Aïn Chock' },
+      addr: { ar: 'شارع 300، حي مولاي عبد الله، عين الشق', fr: 'Rue 300, quartier Moulay Abdellah, Aïn Chock' },
+      tel: '0522871136', telLabel: '05 22 87 11 36', q: 'Hôpital Mohammed Sekkat, Aïn Chock, Casablanca' },
+    { name: { ar: 'مكتب حفظ الصحة — أنفا', fr: 'Bureau d’hygiène — Anfa' },
+      addr: { ar: 'شارع طانطان', fr: 'Rue Tan-Tan' },
+      tel: '0522941815', telLabel: '05 22 94 18 15', q: 'Bureau municipal d’hygiène Anfa, Casablanca' },
+    { name: { ar: 'مكتب حفظ الصحة — عين الشق', fr: 'Bureau d’hygiène — Aïn Chock' },
+      addr: { ar: 'شارع الداورة، مقر المقاطعة', fr: 'Bd Eddaoura, siège de l’arrondissement' },
+      tel: '0675491963', telLabel: '06 75 49 19 63', q: 'Bureau d’hygiène Aïn Chock, Casablanca' },
+    { name: { ar: 'مكتب حفظ الصحة — الصخور السوداء', fr: 'Bureau d’hygiène — Roches Noires' },
+      addr: { ar: 'حي عادل', fr: 'Hay Adil' },
+      tel: '0663793079', telLabel: '06 63 79 30 79', q: 'Hay Adil, Roches Noires, Casablanca' },
+    { name: { ar: 'مكتب حفظ الصحة — الفداء', fr: 'Bureau d’hygiène — Al Fida' },
+      addr: { ar: 'حي الإدريسية، قرب مرجان درب السلطان', fr: 'Hay Idrissia, près de Marjane Derb Sultan' },
+      tel: '0667030613', telLabel: '06 67 03 06 13', q: 'Hay Idrissia, Al Fida, Casablanca' },
+    { name: { ar: 'مكتب حفظ الصحة — سيدي عثمان', fr: 'Bureau d’hygiène — Sidi Othmane' },
+      addr: { ar: 'شارع الجولان', fr: 'Bd Al Joulane' },
+      tel: '0661055898', telLabel: '06 61 05 58 98', q: 'Bd Al Joulane, Sidi Othmane, Casablanca' },
+    { name: { ar: 'مكتب حفظ الصحة — المعاريف', fr: 'Bureau d’hygiène — Maârif' },
+      addr: { ar: 'زاوية شارع 9 أبريل وزنقة شرف الدين، درب غلف', fr: 'Angle Bd 9 Avril et rue Charaf Eddine, Derb Ghallef' },
+      tel: '0668769111', telLabel: '06 68 76 91 11', q: 'Derb Ghallef, Maârif, Casablanca' },
+    { name: { ar: 'مكتب حفظ الصحة — الحي الحسني', fr: 'Bureau d’hygiène — Hay Hassani' },
+      addr: { ar: 'شارع سيدي الخدير، درب الوردة', fr: 'Bd Sidi El Khadir, Derb Louarda' },
+      tel: '0522903064', telLabel: '05 22 90 30 64', q: 'Bd Sidi El Khadir, Hay Hassani, Casablanca' },
+    { name: { ar: 'مكتب حفظ الصحة — سيدي مومن', fr: 'Bureau d’hygiène — Sidi Moumen' },
+      addr: { ar: 'تجزئة ميمة Gh2', fr: 'Lotissement Mima, Gh2' },
+      tel: '0666815244', telLabel: '06 66 81 52 44', q: 'Lotissement Mima, Sidi Moumen, Casablanca' },
+    { name: { ar: 'مركز صحي — بن مسيك (حي الجامع)', fr: 'Centre de santé — Ben M’sick (Cité Djamaa)' }, addr: { fr: 'Rue Chahid Kacem Dahmani' }, q: 'Centre de santé Cité Djamaa, Ben Msick, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي بئر أنزران — سباتة', fr: 'Centre de santé Bir Anzarane — Sbata' }, addr: { fr: 'Jamila 4, Bd Sakia Lhamra, Rue 89' }, q: 'Centre de santé Bir Anzarane, Sbata, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي — مولاي رشيد', fr: 'Centre de santé — Moulay Rachid' }, addr: { fr: 'Hay Moulay Rachid, Groupe 6' }, q: 'Centre de santé Hay Moulay Rachid, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي — سيدي مومن', fr: 'Centre de santé — Sidi Moumen' }, addr: { fr: 'Ahl Loghlam I, Al Azhar' }, q: 'Centre de santé Ahl Loghlam, Sidi Moumen, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي سيدي معروف — عين الشق', fr: 'Centre de santé Sidi Maârouf — Aïn Chock' }, addr: { fr: 'Oued Haddou, Sidi Maârouf' }, q: 'Centre de santé Sidi Maarouf, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي — الحي الحسني', fr: 'Centre de santé — Hay Hassani' }, addr: { fr: 'Angle rue Sidi El Khadir et rue Ibnou Al Haitam' }, q: 'Centre de santé Hay Hassani, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي ابن النفيس — أنفا', fr: 'Centre de santé Ibn Nafis — Anfa' }, addr: { fr: 'Route d’Azemmour, en face de l’école Ibn Nafis' }, q: 'Centre de santé Ibn Nafis, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي — سيدي بليوط', fr: 'Centre de santé — Sidi Belyout' }, addr: { fr: 'Rue de Tanger, ancienne médina' }, q: 'Centre de santé rue de Tanger, ancienne médina, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي ابن زهر — المعاريف', fr: 'Centre de santé Ibn Zohr — Maârif' }, addr: { fr: 'Rue des Éperviers, Oasis' }, q: 'Centre de santé Ibn Zohr, Oasis, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي — عين السبع', fr: 'Centre de santé — Aïn Sebaâ' }, addr: { fr: 'Aïn Sebaâ' }, q: 'Centre de santé Ain Sebaa, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي حي جمال — الصخور السوداء', fr: 'Centre de santé Hay Jamal — Roches Noires' }, addr: { fr: 'Hay Jamal' }, q: 'Centre de santé Hay Jamal, Casablanca', moh: true },
+    { name: { ar: 'مركز صحي — الحي المحمدي', fr: 'Centre de santé — Hay Mohammadi' }, addr: { fr: 'Saâda, Hay Mohammadi' }, q: 'Centre de santé Hay Mohammadi, Casablanca', moh: true },
+  ],
+  mohammedia: [
+    { name: { ar: 'المكتب البلدي لحفظ الصحة — المحمدية', fr: 'Bureau municipal d’hygiène — Mohammedia' },
+      addr: { ar: 'زنقة وليلي، العالية', fr: 'Rue Oualili, El Alia' },
+      tel: '0523324249', telLabel: '05 23 32 42 49', q: 'Bureau d’hygiène, Rue Oualili, El Alia, Mohammedia', verify: true },
+    { name: { ar: 'مركز صحي — الشلالات', fr: 'Centre de santé — Chellalate' }, addr: { fr: 'Chellalate' }, q: 'Centre de santé Chellalate, Mohammedia', moh: true },
+    { name: { ar: 'مركز صحي — بني يخلف', fr: 'Centre de santé — Beni Yakhlef' }, addr: { fr: 'Beni Yakhlef' }, q: 'Centre de santé Beni Yakhlef, Mohammedia', moh: true },
+  ],
+};
+
+// Casablanca-Settat region: "Liste des centres de référence antirabique",
+// Ministère de la Santé (sante.gov.ma). Names/addresses as given; no phones.
+const REGION_LIST = [
+  { n: 'Ahlaf', ar: 'أحلاف', a: '' },
+  { n: 'Azemmour', ar: 'أزمور', a: 'Route de la plage' },
+  { n: 'Aïn Tizgha', ar: 'عين تيزغة', a: 'Laayoune' },
+  { n: 'Ben Ahmed', ar: 'بن أحمد', a: '' },
+  { n: 'Ben Maachou', ar: 'بن معاشو', a: '' },
+  { n: 'Beni Khloug', ar: 'بني خلوك', a: '' },
+  { n: 'Berrechid', ar: 'برشيد', a: '' },
+  { n: 'Bir Ennasr', ar: 'بئر النصر', a: '' },
+  { n: 'Bir Jdid', ar: 'البئر الجديد', a: 'Cité administrative' },
+  { n: 'Bouskoura', ar: 'بوسكورة', a: '' },
+  { n: 'Brouza', ar: '', a: '' },
+  { n: 'Cherrat', ar: 'الشراط', a: '' },
+  { n: 'Chouawcha', ar: '', a: '' },
+  { n: 'Dar Bouazza', ar: 'دار بوعزة', a: '' },
+  { n: 'Dar Chafaai', ar: 'دار الشافعي', a: '' },
+  { n: 'Derb Guebas', ar: '', a: 'Derb El Hajar' },
+  { n: 'Deroua', ar: 'الدروة', a: '' },
+  { n: 'El Brouj', ar: 'البروج', a: '' },
+  { n: 'El Gara', ar: 'الكارة', a: '' },
+  { n: 'Errahma', ar: 'الرحمة', a: '' },
+  { n: 'Foqra Oulad Ameur', ar: '', a: '' },
+  { n: 'Gharbia', ar: 'الغربية', a: '' },
+  { n: 'Guisser', ar: 'كيسر', a: '' },
+  { n: 'Had Soualem', ar: 'حد السوالم', a: '' },
+  { n: 'Hay Al Matar', ar: 'حي المطار', a: '' },
+  { n: 'Jaqma', ar: 'جاقمة', a: '' },
+  { n: 'Kasbat Ben Mchich', ar: 'قصبة بن مشيش', a: '' },
+  { n: 'Khdara', ar: '', a: '' },
+  { n: 'Krarma', ar: '', a: '' },
+  { n: 'Laagagcha', ar: 'لعكاكشة', a: '' },
+  { n: 'Laaliche', ar: '', a: '' },
+  { n: 'Laamour', ar: '', a: 'Fdalate' },
+  { n: 'Laghnimiyine', ar: 'لغنيميين', a: '' },
+  { n: 'Lahraouiyine', ar: 'الهراويين', a: 'Al Omrane' },
+  { n: 'Lambarkiyine', ar: 'لمباركيين', a: '' },
+  { n: 'Lamkansa Sud', ar: 'لمكانسة', a: '' },
+  { n: 'Mellila', ar: 'مليلة', a: 'Mdakra' },
+  { n: 'Mettouh', ar: 'متوح', a: 'Village Mettouh' },
+  { n: 'Mgarto', ar: 'امكارطو', a: '' },
+  { n: 'Mouaning', ar: '', a: '' },
+  { n: 'Moulay Abdellah', ar: 'مولاي عبد الله', a: '' },
+  { n: 'Médiouna', ar: 'مديونة', a: '' },
+  { n: 'Nouaceur', ar: 'النواصر', a: '' },
+  { n: 'Oualidia', ar: 'الوليدية', a: '' },
+  { n: 'Oulad Azzouz', ar: 'أولاد عزوز', a: '' },
+  { n: 'Oulad Ghanem', ar: 'أولاد غانم', a: 'Douar Rgagda, Ouled Said' },
+  { n: 'Oulad Salah', ar: 'أولاد صالح', a: 'Laamamra' },
+  { n: 'Oulad Sebbah', ar: 'أولاد صباح', a: '' },
+  { n: 'Oulad Ziane', ar: 'أولاد زيان', a: '' },
+  { n: 'Oulad Zidane', ar: 'أولاد زيدان', a: '' },
+  { n: 'Ouled Abbou', ar: 'أولاد عبو', a: '' },
+  { n: 'Ouled Bouziri', ar: 'أولاد بوزيري', a: '' },
+  { n: 'Ouled Breik', ar: '', a: '' },
+  { n: 'Ouled Fares', ar: 'أولاد فارس', a: '' },
+  { n: 'Ouled Frej', ar: 'أولاد فرج', a: 'Village Ouled Frej' },
+  { n: 'Ouled Hcine', ar: 'أولاد حسين', a: '' },
+  { n: 'Ouled Said', ar: 'أولاد سعيد', a: '' },
+  { n: 'Ras El Ain', ar: 'رأس العين', a: '' },
+  { n: 'Rgagna', ar: '', a: '' },
+  { n: 'Riah', ar: '', a: '' },
+  { n: 'Sahel Oulad Hriz', ar: 'ساحل أولاد حريز', a: '' },
+  { n: 'Saniat Berguig', ar: 'سانية بركيك', a: '' },
+  { n: 'Sebt Sahel', ar: '', a: '' },
+  { n: 'Settat', ar: 'سطات', a: '' },
+  { n: 'Sidi Abdelkhalek', ar: 'سيدي عبد الخالق', a: '' },
+  { n: 'Sidi Abdelkrim', ar: 'سيدي عبد الكريم', a: '' },
+  { n: 'Sidi Bennour', ar: 'سيدي بنور', a: '' },
+  { n: 'Sidi Bettache', ar: 'سيدي بطاش', a: '' },
+  { n: 'Sidi El Mekki', ar: 'سيدي المكي', a: '' },
+  { n: 'Sidi Hajjaj', ar: 'سيدي حجاج', a: '' },
+  { n: 'Sidi Laydi', ar: 'سيدي العايدي', a: '' },
+  { n: 'Sidi Rahal', ar: 'سيدي رحال', a: '' },
+  { n: 'Sidi Smail', ar: 'سيدي إسماعيل', a: '' },
+  { n: 'Sidi Yahya', ar: 'سيدي يحيى', a: 'Route de Marrakech' },
+  { n: 'Soualem Trifiya', ar: 'السوالم الطريفية', a: '' },
+  { n: 'Tit Mellil', ar: 'تيط مليل', a: '' },
+  { n: 'Tlat Loulad', ar: 'ثلاثاء الولاد', a: '' },
+  { n: 'Tnine Chtouka', ar: 'اثنين اشتوكة', a: 'Village Tnine Chtouka' }
+];
+
+// ─── TEXT ────────────────────────────────────────────────────────────────
+const T = {
+  ar: {
+    dir: 'rtl', locale: 'ar-MA',
+    brand: 'السعار — تصرف بسرعة',
+    sos: 'اتصل بالإسعاف — 141',
+    title: 'تعرّضت لعضة أو خدش حيوان؟',
+    subtitle: 'أداة سريعة لمعرفة درجة الخطر وأين تذهب. للتوعية فقط.',
+    heroLabel: 'أول خطوة — افعلها الآن، قبل أي شيء آخر',
+    heroText: 'اغسل مكان العضة أو الخدش فوراً بالكثير من الماء والصابون لمدة 15 دقيقة على الأقل، ثم ضع مطهراً إن توفر وغطّه بضمادة نظيفة. لا تخِط الجرح ولا تضع عليه أي خلطة تقليدية. بعدها توجّه لأقرب مركز صحي.',
+    emergencyNote: '⚠️ إذا كانت العضة قديمة وبدأت عليك أعراض مثل حمى أو صداع شديد أو صعوبة في البلع أو خوف من الماء — هذه حالة طارئة قصوى، توجّه فوراً لأقرب مستعجلات.',
+    startBtn: 'قيّم درجة الخطر الآن',
+    q1Title: 'ما نوع التلامس مع الحيوان؟',
+    q1: ['لمسته أو أطعمته فقط، بدون عض أو خدش', 'لعق جلدي السليم، بدون أي جرح', 'خدش سطحي بدون نزيف', 'عضة أو خدش تسبب في نزيف', 'لعق جرحاً مفتوحاً عندي، أو لامس لعابه عيني أو فمي أو أنفي'],
+    q2Title: 'ما حالة الحيوان؟',
+    q2: ['أليف ومعروف، مطعّم ضد السعار، ويبدو سليماً', 'أليف لكن لست متأكداً من تطعيمه', 'شارد أو مجهول', 'حيوان بري (كلب مشتبه، خفاش، ابن آوى...)'],
+    back: 'رجوع',
+    result: {
+      low: { badge: 'خطر منخفض جداً', title: 'خطر منخفض جداً', text: 'في الغالب لا حاجة للقاح السعار. اغسل مكان الملامسة جيداً بالماء والصابون. إن أمكن، راقب الحيوان لمدة 10 أيام، وإذا تغيّر سلوكه أو مات توجّه فوراً لمركز صحي.' },
+      mod: { badge: 'خطر متوسط', title: 'خطر متوسط — التلقيح ضروري', text: 'توجّه اليوم نفسه، دون تأخير، إلى أقرب مركز صحي أو مكتب حفظ الصحة أو مستعجلات لتنظيف الجرح والحصول على لقاح السعار.' },
+      high: { badge: 'خطر مرتفع', title: 'خطر مرتفع — حالة طارئة', text: 'توجّه فوراً إلى أقرب مستعجلات أو مركز مضاد للسعار. قد تحتاج إلى مصل مضاد للسعار بالإضافة إلى اللقاح. لا تنتظر.' },
+      noteKnown: 'الحيوان أليف ويمكن مراقبته: الطبيب هو من يقرر إن كانت مراقبته 10 أيام كافية — قرار طبي، وليس شخصياً.',
+      noteUnknown: 'بما أن الحيوان مجهول أو بري ولا يمكن مراقبته، يُنصح بعدم الانتظار والبدء بالعلاج مباشرة.',
+    },
+    placesTitle: 'أين تحصل على العلاج؟',
+    regionPrompt: 'اختر مدينتك...',
+    regions: { casa: 'الدار البيضاء', mohammedia: 'المحمدية', region: 'جهة الدار البيضاء-سطات', other: 'مدينة أخرى' },
+    regionSearch: 'ابحث باسم مدينتك أو جماعتك (مثال: برشيد أو Berrechid)',
+    regionNote: 'مراكز مرجعية لمكافحة السعار حسب لائحة وزارة الصحة. العناوين كما وردت في اللائحة، ولا تتوفر أرقام هواتفها.',
+    regionEmpty: 'لم نجد جماعتك في اللائحة. توجّه لأقرب مركز صحي أو مستعجلات، أو اختر "مدينة أخرى".',
+    mohTag: 'لائحة وزارة الصحة — بدون رقم هاتف',
+    nearMeBtn: '🗺️ أقرب مستعجلات لموقعي الآن',
+    callLabel: 'اتصل', copyLabel: 'نسخ العنوان', copiedLabel: 'تم النسخ ✅', routeLabel: 'الطريق والمدة',
+    verifyNote: 'الرقم من دليل هاتفي عمومي — يُستحسن التأكد منه.',
+    nightNote: 'مكاتب حفظ الصحة تعمل عادة بالنهار في أيام العمل. في الليل أو أيام العطل: توجّه مباشرة لأقرب مستعجلات.',
+    otherPlaceholder: 'اكتب اسم مدينتك أو قريتك...',
+    otherNote: 'لا نملك بعد لائحة مؤكدة لمدينتك. أي مستعجلات مستشفى عمومي أو مركز صحي أو مكتب حفظ الصحة يستطيع التكفل بك، واللقاح مجاني.',
+    copyErBtn: '📋 انسخ بحث: مستعجلات + مدينتي', copyCentreBtn: '📋 انسخ بحث: مركز صحي + مدينتي',
+    mapsErBtn: '🗺️ أقرب مستعجلات على الخريطة', mapsCentreBtn: '🗺️ أقرب مركز صحي على الخريطة',
+    copyHint: 'بعد النسخ، افتح تطبيق الخرائط وألصق النص في خانة البحث.',
+    qEr: 'مستعجلات مستشفى', qCentre: 'مركز صحي',
+    stepsTitle: 'كيف تحصل على التطعيم؟',
+    steps: [
+      '<b>اغسل الجرح</b> بالماء والصابون 15 دقيقة على الأقل، وغطّه بضمادة نظيفة.',
+      '<b>توجّه في نفس اليوم</b> لأقرب مركز صحي أو مكتب حفظ الصحة أو مستعجلات. إن أمكن، خذ معك بطاقة التعريف ومعلومات عن الحيوان (هل هو معروف؟ مطعّم؟).',
+      '<b>الطبيب يفحصك</b> ويحدد درجة الخطورة. حسب الحالة قد تتلقى: لقاح السعار، لقاح الكزاز، ومصلاً مضاداً للسعار حول الجرح في الحالات الخطيرة.',
+      '<b>اللقاح مجاني</b> ولا مانع له حسب السن. غالباً 4 جرعات: جرعتان في اليوم الأول (واحدة في كل ذراع)، ثم اليوم 7، ثم اليوم 21. إذا سبق لك تلقيح كامل: جرعتان فقط (اليوم 0 و3).',
+      '<b>أكمل كل الجرعات</b> في مواعيدها واحتفظ ببطاقة التلقيح. آثار جانبية خفيفة وعابرة ممكنة: ألم أو احمرار مكان الحقن، حمى خفيفة، صداع.',
+    ],
+    stepsSource: 'المصدر: وزارة الصحة والحماية الاجتماعية — sehati.gov.ma',
+    doseTitle: 'احسب مواعيد جرعاتك',
+    doseStartLabel: 'تاريخ الجرعة الأولى:',
+    doses: ['اليوم 0 — جرعتان', 'اليوم 7 — جرعة', 'اليوم 21 — الجرعة الأخيرة'],
+    doseNote: 'هذا البروتوكول المعتمد عادة في المغرب. الطبيب هو من يحدد بروتوكولك النهائي — اتّبع دائماً تعليماته وبطاقتك.',
+    factsTitle: 'معلومات سريعة عن السعار بالمغرب',
+    facts: [
+      'السعار قاتل بنسبة تقارب 100٪ بعد ظهور الأعراض، لكنه يُمنع بشكل شبه كامل بالعلاج المبكر بعد التعرض.',
+      'يسجّل المغرب أكثر من 100,000 حالة عضة حيوانية سنوياً، وارتفعت الوفيات إلى 33 حالة سنة 2024 بعد أن كانت بين 20 و22 سنوياً.',
+      'الكلاب مسؤولة عن أكثر من 93٪ من حالات انتقال العدوى للإنسان بالمغرب، ويتحمّل الوسط القروي العبء الأكبر بنسبة تصل إلى 82٪ من الحالات الحيوانية.',
+      'تجنّب قتل الحيوان الذي هاجمك إن أمكن، وبلّغ المصالح البيطرية لتتم مراقبته.',
+      'علامات محتملة للسعار عند الحيوان: عدوانية مفاجئة أو خمول غير عادي، لعاب زائد، شلل. لكن حيواناً يبدو سليماً قد يحمل الفيروس — المظهر وحده لا يكفي أبداً لاستبعاد الخطر.',
+    ],
+    restart: 'ابدأ تقييماً جديداً',
+    disclaimer: 'هذه الأداة توعوية فقط، أعدّها طالب، ولا تُغني عن استشارة طبية. في حالة أي شك، توجّه دائماً لأقرب مركز صحي أو مستعجلات.',
+  },
+  da: {
+    dir: 'rtl', locale: 'ar-MA',
+    brand: 'السعار — تحرك دغيا',
+    sos: 'عيط للإسعاف — 141',
+    title: 'عضك ولا خمشك شي حيوان؟',
+    subtitle: 'أداة باش تعرف شحال الخطر وفين تمشي. غير للتوعية.',
+    heroLabel: 'أول حاجة دير، قبل كلشي',
+    heroText: 'غسل البلاصة ديال العضة ولا الخمش دغيا بالما والصابون بزاف، 15 دقيقة على الأقل. من بعد حط مطهر إلا كان، وغطيها بفاصمة نقية. ما تخيطش الجرح وما تحط عليه حتى شي خلطة تقليدية. ومن بعد سير لأقرب مركز صحي.',
+    emergencyNote: '⚠️ إلا كانت العضة قديمة وبداو يبانو عليك أعراض بحال السخانة، وجع الراس بزاف، صعوبة فالبلع ولا خوف من الما — هادي حالة مستعجلة بزاف، سير دغيا لأقرب مستعجلات.',
+    startBtn: 'شوف شحال الخطر دابا',
+    q1Title: 'شنو وقع بالضبط مع الحيوان؟',
+    q1: ['غير مسيتو ولا وكلتو، بلا عضة ولا خمش', 'لحس ليا الجلد وماكاين حتى جرح', 'خمش خفيف بلا دم', 'عضة ولا خمش خرج فيه الدم', 'لحس ليا جرح محلول، ولا الريق ديالو جا فعيني ولا فمي ولا نيفي'],
+    q2Title: 'شنو حال الحيوان؟',
+    q2: ['ديال الدار، معروف، مطعّم ضد السعار، وباين مزيان', 'ديال الدار بصح ماعارفش واش مطعّم', 'سايب ولا ماكنعرفوش', 'حيوان بري (كلب مشكوك فيه، طير الليل، ديب...)'],
+    back: 'رجوع',
+    result: {
+      low: { badge: 'خطر خفيف بزاف', title: 'خطر خفيف بزاف', text: 'غالباً ماغاتحتاجش اللقاح. غسل البلاصة مزيان بالما والصابون. إلا قدرتي، راقب الحيوان 10 أيام، وإلا تبدل سلوكو ولا مات سير دغيا لمركز صحي.' },
+      mod: { badge: 'خطر متوسط', title: 'خطر متوسط — خاصك اللقاح', text: 'سير فنفس النهار، بلا ماتعطل، لأقرب مركز صحي ولا مكتب حفظ الصحة ولا مستعجلات باش ينقيو ليك الجرح ويعطيوك اللقاح.' },
+      high: { badge: 'خطر كبير', title: 'خطر كبير — حالة مستعجلة', text: 'سير دغيا لأقرب مستعجلات ولا مركز ديال السعار. يمكن تحتاج المصل زيادة على اللقاح. ماتسناش.' },
+      noteKnown: 'الحيوان ديال الدار ويمكن يتراقب: الطبيب هو لي كيقرر واش المراقبة ديال 10 أيام كافية — قرار طبي، ماشي ديالك بوحدك.',
+      noteUnknown: 'حيت الحيوان ماكنعرفوهش ولا بري وماكيمكنش يتراقب، الأحسن ماتسناش وتبدا العلاج دغيا.',
+    },
+    placesTitle: 'فين تتعالج؟',
+    regionPrompt: 'ختار المدينة ديالك...',
+    regions: { casa: 'الدار البيضاء', mohammedia: 'المحمدية', region: 'جهة الدار البيضاء-سطات', other: 'مدينة أخرى' },
+    regionSearch: 'قلّب بسمية المدينة ولا الجماعة ديالك (بحال: برشيد ولا Berrechid)',
+    regionNote: 'مراكز ديال السعار حسب اللائحة ديال وزارة الصحة. العناوين كيف جات فاللائحة، والنمرة ديال التيليفون ما كايناش.',
+    regionEmpty: 'ما لقيناش الجماعة ديالك فاللائحة. سير لأقرب مركز صحي ولا مستعجلات، ولا ختار "مدينة أخرى".',
+    mohTag: 'لائحة وزارة الصحة — بلا نمرة ديال التيليفون',
+    nearMeBtn: '🗺️ أقرب مستعجلات ليا دابا',
+    callLabel: 'عيط', copyLabel: 'نسخ العنوان', copiedLabel: 'تنسخ ✅', routeLabel: 'الطريق والوقت',
+    verifyNote: 'الرقم من دليل هاتفي عمومي — تأكد منو إلا قدرتي.',
+    nightNote: 'مكاتب حفظ الصحة غالباً خدامين بالنهار فأيام الخدمة. فالليل ولا نهار العطلة: سير نيشان لأقرب مستعجلات.',
+    otherPlaceholder: 'كتب سمية المدينة ولا الدوار ديالك...',
+    otherNote: 'مازال ماعندناش لائحة مؤكدة للمدينة ديالك. أي مستعجلات ديال سبيطار عمومي ولا مركز صحي ولا مكتب حفظ الصحة يقدر يتكلف بيك، واللقاح فابور.',
+    copyErBtn: '📋 نسخ البحث: مستعجلات + المدينة ديالي', copyCentreBtn: '📋 نسخ البحث: مركز صحي + المدينة ديالي',
+    mapsErBtn: '🗺️ أقرب مستعجلات فالخريطة', mapsCentreBtn: '🗺️ أقرب مركز صحي فالخريطة',
+    copyHint: 'من بعد النسخ، حل تطبيق الخرائط ولصق الكلام فالبحث.',
+    qEr: 'مستعجلات مستشفى', qCentre: 'مركز صحي',
+    stepsTitle: 'كيفاش تاخد اللقاح؟',
+    steps: [
+      '<b>غسل الجرح</b> بالما والصابون 15 دقيقة على الأقل، وغطيه بفاصمة نقية.',
+      '<b>سير فنفس النهار</b> لأقرب مركز صحي ولا مكتب حفظ الصحة ولا المستعجلات. إلا قدرتي، هز معاك البطاقة الوطنية والمعلومات على الحيوان (واش معروف؟ مطعّم؟).',
+      '<b>الطبيب غادي يشوفك</b> ويحدد شحال الخطر. على حساب الحالة يقدر يعطيك: لقاح السعار، لقاح التيتانوس، والمصل حدا الجرح إلا كانت الحالة خطيرة.',
+      '<b>اللقاح فابور</b> وماعندو حتى مشكل مع السن. غالباً 4 د الجرعات: جوج فالنهار الأول (وحدة فكل دراع)، من بعد النهار 7، ومن بعد النهار 21. إلا كنتي ملقح كامل من قبل: غير جوج جرعات (النهار 0 و3).',
+      '<b>كمّل كاع الجرعات</b> فالوقت ديالهم وحضي بطاقة التلقيح. ممكن تحس بحوايج خفاف وكيدوزو: وجع ولا حمورية فبلاصة الإبرة، سخانة خفيفة، وجع الراس.',
+    ],
+    stepsSource: 'المصدر: وزارة الصحة والحماية الاجتماعية — sehati.gov.ma',
+    doseTitle: 'حسب المواعيد ديال الجرعات ديالك',
+    doseStartLabel: 'نهار الجرعة الأولى:',
+    doses: ['النهار 0 — جوج جرعات', 'النهار 7 — جرعة', 'النهار 21 — آخر جرعة'],
+    doseNote: 'هادا هو البروتوكول لي كيتخدم بيه غالباً فالمغرب. الطبيب هو لي كيحدد البروتوكول ديالك — تبع ديما الكلام ديالو والبطاقة ديالك.',
+    factsTitle: 'معلومات سريعة على السعار فالمغرب',
+    facts: [
+      'السعار كيقتل تقريباً 100٪ إلا بانو الأعراض، بصح كيتوقى تقريباً كامل إلا تعالجتي دغيا.',
+      'المغرب كيسجل كثر من 100,000 عضة ديال الحيوانات فالعام، والوفيات طلعو ل33 فـ2024 بعدما كانو بين 20 و22 فالعام.',
+      'الكلاب هوما السبب فكثر من 93٪ ديال العدوى للإنسان فالمغرب، والعروبية فيها تقريباً 82٪ من الحالات ديال الحيوانات.',
+      'بلا ماتقتل الحيوان إلا قدرتي، بلّغ المصالح البيطرية باش يراقبوه.',
+      'علامات ممكنة ديال السعار عند الحيوان: عدوانية مفاجئة ولا عيا ماشي عادي، ريق بزاف، شلل. بصح حيوان باين سليم يقدر يكون فيه الفيروس — الشكل بوحدو مايكفيش.',
+    ],
+    restart: 'بدا تقييم جديد',
+    disclaimer: 'هاد الأداة غير للتوعية، دارها طالب، وماكتعوضش الطبيب. إلا كان عندك أي شك، سير ديما لأقرب مركز صحي ولا مستعجلات.',
+  },
+  fr: {
+    dir: 'ltr', locale: 'fr-FR',
+    brand: 'Rage — Agissez vite',
+    sos: 'Appeler le SAMU — 141',
+    title: 'Morsure ou griffure d’un animal ?',
+    subtitle: 'Un outil rapide pour évaluer le risque et savoir où aller. À visée informative uniquement.',
+    heroLabel: 'Premier geste — à faire tout de suite, avant tout',
+    heroText: 'Lavez immédiatement la plaie abondamment à l’eau et au savon pendant au moins 15 minutes, appliquez un antiseptique si disponible et couvrez d’un pansement propre. Ne suturez pas la plaie et n’y appliquez aucun remède traditionnel. Rendez-vous ensuite au centre de santé le plus proche.',
+    emergencyNote: '⚠️ Si la morsure est ancienne et que des symptômes apparaissent (fièvre, maux de tête sévères, difficulté à avaler, peur de l’eau) — c’est une urgence extrême : allez immédiatement aux urgences.',
+    startBtn: 'Évaluer le risque maintenant',
+    q1Title: 'Quel type de contact avez-vous eu ?',
+    q1: ['Je l’ai touché ou nourri seulement, sans morsure ni griffure', 'Léchage sur peau intacte, sans aucune plaie', 'Griffure superficielle, sans saignement', 'Morsure ou griffure ayant provoqué un saignement', 'Léchage sur une plaie ouverte, ou salive au contact des yeux, de la bouche ou du nez'],
+    q2Title: 'Quel est le statut de l’animal ?',
+    q2: ['Domestique et connu, vacciné contre la rage, semble en bonne santé', 'Domestique, mais vaccination incertaine', 'Errant ou inconnu', 'Animal sauvage (chien suspect, chauve-souris, chacal...)'],
+    back: 'Retour',
+    result: {
+      low: { badge: 'Risque très faible', title: 'Risque très faible', text: 'La vaccination n’est généralement pas nécessaire. Lavez bien la zone à l’eau et au savon. Si possible, surveillez l’animal 10 jours ; s’il change de comportement ou meurt, consultez immédiatement.' },
+      mod: { badge: 'Risque modéré', title: 'Risque modéré — vaccination nécessaire', text: 'Rendez-vous le jour même, sans attendre, au centre de santé, au bureau d’hygiène ou aux urgences les plus proches pour le soin de la plaie et le vaccin antirabique.' },
+      high: { badge: 'Risque élevé', title: 'Risque élevé — urgence', text: 'Allez immédiatement aux urgences ou dans un centre antirabique. Des immunoglobulines antirabiques peuvent être nécessaires en plus du vaccin. N’attendez pas.' },
+      noteKnown: 'L’animal est domestique et observable : c’est le médecin qui décide si une surveillance de 10 jours suffit — décision médicale, pas personnelle.',
+      noteUnknown: 'L’animal étant inconnu ou sauvage et non observable, il est recommandé de ne pas attendre et de débuter le traitement immédiatement.',
+    },
+    placesTitle: 'Où se faire soigner ?',
+    regionPrompt: 'Choisissez votre ville...',
+    regions: { casa: 'Casablanca', mohammedia: 'Mohammedia', region: 'Région Casablanca-Settat', other: 'Autre ville' },
+    regionSearch: 'Cherchez votre ville ou commune (ex : Berrechid)',
+    regionNote: 'Centres de référence antirabique selon la liste du Ministère de la Santé. Adresses telles qu’indiquées dans la liste, sans numéro de téléphone.',
+    regionEmpty: 'Commune introuvable dans la liste. Allez au centre de santé ou aux urgences les plus proches, ou choisissez « Autre ville ».',
+    mohTag: 'Liste du Ministère de la Santé — sans numéro',
+    nearMeBtn: '🗺️ Urgences les plus proches de moi',
+    callLabel: 'Appeler', copyLabel: 'Copier l’adresse', copiedLabel: 'Copié ✅', routeLabel: 'Itinéraire et durée',
+    verifyNote: 'Numéro issu d’un annuaire public — à vérifier si possible.',
+    nightNote: 'Les bureaux d’hygiène ouvrent généralement en journée, jours ouvrables. La nuit ou les jours fériés : allez directement aux urgences les plus proches.',
+    otherPlaceholder: 'Tapez votre ville ou village...',
+    otherNote: 'Nous n’avons pas encore de liste vérifiée pour votre ville. Les urgences d’un hôpital public, un centre de santé ou un bureau d’hygiène peuvent vous prendre en charge, et le vaccin est gratuit.',
+    copyErBtn: '📋 Copier : urgences + ma ville', copyCentreBtn: '📋 Copier : centre de santé + ma ville',
+    mapsErBtn: '🗺️ Urgences les plus proches sur la carte', mapsCentreBtn: '🗺️ Centre de santé le plus proche sur la carte',
+    copyHint: 'Après la copie, ouvrez votre application de cartes et collez le texte dans la recherche.',
+    qEr: 'urgences hôpital', qCentre: 'centre de santé',
+    stepsTitle: 'Comment se faire vacciner ?',
+    steps: [
+      '<b>Lavez la plaie</b> à l’eau et au savon pendant au moins 15 minutes, puis couvrez-la d’un pansement propre.',
+      '<b>Consultez le jour même</b> le centre de santé, le bureau d’hygiène ou les urgences les plus proches. Si possible, emportez votre CIN et des informations sur l’animal (connu ? vacciné ?).',
+      '<b>Le médecin vous examine</b> et évalue la gravité. Selon le cas : vaccin antirabique, vaccin antitétanique, et immunoglobulines antirabiques autour de la plaie pour les expositions graves.',
+      '<b>Le vaccin est gratuit</b> et sans contre-indication liée à l’âge. Généralement 4 doses : deux au jour 0 (une dans chaque bras), puis jour 7 et jour 21. Déjà complètement vacciné auparavant : 2 doses seulement (J0 et J3).',
+      '<b>Faites toutes les doses</b> aux dates prévues et gardez votre carte de vaccination. Effets secondaires possibles et passagers : douleur ou rougeur au point d’injection, légère fièvre, maux de tête.',
+    ],
+    stepsSource: 'Source : Ministère de la Santé et de la Protection Sociale — sehati.gov.ma',
+    doseTitle: 'Calculez vos dates de doses',
+    doseStartLabel: 'Date de la première dose :',
+    doses: ['Jour 0 — deux doses', 'Jour 7 — une dose', 'Jour 21 — dernière dose'],
+    doseNote: 'Protocole généralement utilisé au Maroc. C’est le médecin qui fixe votre protocole final — suivez toujours ses consignes et votre carte.',
+    factsTitle: 'Quelques repères sur la rage au Maroc',
+    facts: [
+      'La rage est mortelle à près de 100 % une fois les symptômes apparus, mais presque entièrement évitable par un traitement précoce après exposition.',
+      'Le Maroc enregistre plus de 100 000 morsures animales par an, et les décès sont montés à 33 en 2024, contre 20 à 22 par an auparavant.',
+      'Les chiens sont responsables de plus de 93 % des transmissions à l’humain au Maroc, et le milieu rural concentre jusqu’à 82 % des cas animaux.',
+      'Évitez de tuer l’animal si possible, et signalez-le aux services vétérinaires pour qu’il soit surveillé.',
+      'Signes possibles de rage chez l’animal : agressivité soudaine ou abattement inhabituel, salivation excessive, paralysie. Mais un animal d’apparence saine peut porter le virus — l’apparence seule ne suffit jamais.',
+    ],
+    restart: 'Recommencer une évaluation',
+    disclaimer: 'Cet outil, conçu par un étudiant, est purement informatif et ne remplace pas un avis médical. En cas de doute, allez toujours au centre de santé ou aux urgences les plus proches.',
+  },
+};
+
+// ─── STATE ───────────────────────────────────────────────────────────────
+let lang = 'ar', screen = 'home', a1 = null, a2 = null, region = '', doseStart = '';
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────
+const L = (obj) => obj[lang] || obj.ar || obj.fr;
+const mapsSearch = (q) => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+const mapsRoute = (q) => 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(q);
+
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.classList.add('show');
+  clearTimeout(window._tt); window._tt = setTimeout(() => el.classList.remove('show'), 2200);
+}
+function copyText(text) {
+  const done = () => showToast(T[lang].copiedLabel);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else fallbackCopy(text, done);
+}
+function fallbackCopy(text, done) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    const ok = document.execCommand('copy'); document.body.removeChild(ta);
+    if (ok) done(); else window.prompt(T[lang].copyLabel, text);
+  } catch (e) { window.prompt(T[lang].copyLabel, text); }
+}
+function riskLevel(i) { return i <= 1 ? 'low' : (i === 2 ? 'mod' : 'high'); }
+
+// ─── SECTIONS ────────────────────────────────────────────────────────────
+function renderPlaces(t) {
+  let h = `<div class="card"><p class="q-title">📍 ${t.placesTitle}</p>`;
+  h += `<select class="field" onchange="setRegion(this.value)">`;
+  h += `<option value="" disabled ${region === '' ? 'selected' : ''}>${t.regionPrompt}</option>`;
+  ['casa', 'mohammedia', 'region', 'other'].forEach(k => {
+    h += `<option value="${k}" ${region === k ? 'selected' : ''}>${t.regions[k]}</option>`;
+  });
+  h += `</select>`;
+  if (EXTERNAL_LINKS) h += `<a class="btn" href="${mapsSearch(t.qEr)}" target="_blank" rel="noopener">${t.nearMeBtn}</a>`;
+
+  if (PLACES[region]) {
+    h += `<div style="margin-top:6px;">`;
+    PLACES[region].forEach((p, i) => {
+      const call = p.tel ? `<a class="pill primary" href="tel:${p.tel}">📞 ${t.callLabel} <span dir="ltr">${p.telLabel}</span></a>` : '';
+      const route = EXTERNAL_LINKS ? `<a class="pill" href="${mapsRoute(p.q)}" target="_blank" rel="noopener">🧭 ${t.routeLabel}</a>` : '';
+      const copy = `<button class="pill" onclick="copyPlace('${region}',${i})">📋 ${t.copyLabel}</button>`;
+      h += `<div class="place">
+        <p class="place-name">${L(p.name)}</p>
+        <p class="place-sub" dir="auto">${L(p.addr)}</p>
+        ${p.hours ? `<p class="place-sub">🕐 ${L(p.hours)}</p>` : ''}
+        ${p.verify ? `<p class="place-verify">${t.verifyNote}</p>` : ''}
+        ${p.moh ? `<p class="source">${t.mohTag}</p>` : ''}
+        <div class="actions">${call}${route}${copy}</div>
+      </div>`;
+    });
+    h += `</div><div class="note">${t.nightNote}</div>`;
+    if (!EXTERNAL_LINKS) h += `<p class="source">${t.copyHint}</p>`;
+  }
+
+  if (region === 'region') {
+    h += `<p class="place-sub" style="margin:12px 0 10px;">${t.regionNote}</p>`;
+    h += `<input id="regionSearch" class="field" type="search" placeholder="${t.regionSearch}" oninput="filterRegion(this.value)">`;
+    h += `<div id="regionList" style="margin-top:6px;"></div>`;
+    h += `<div class="note">${t.nightNote}</div>`;
+    if (!EXTERNAL_LINKS) h += `<p class="source">${t.copyHint}</p>`;
+  }
+
+  if (region === 'other') {
+    h += `<p class="place-sub" style="margin:12px 0 10px;">${t.otherNote}</p>`;
+    h += `<input id="cityInput" class="field" type="text" placeholder="${t.otherPlaceholder}">`;
+    h += `<button class="btn" onclick="cityAction('er')">${EXTERNAL_LINKS ? t.mapsErBtn : t.copyErBtn}</button>`;
+    h += `<button class="btn btn-outline" onclick="cityAction('centre')">${EXTERNAL_LINKS ? t.mapsCentreBtn : t.copyCentreBtn}</button>`;
+    if (!EXTERNAL_LINKS) h += `<p class="source" style="margin-top:8px;">${t.copyHint}</p>`;
+  }
+  return h + `</div>`;
+}
+
+const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f\u064B-\u0652']/g, '').replace(/[أإآ]/g, 'ا');
+let regionQuery = '';
+function filterRegion(q) {
+  regionQuery = q;
+  const t = T[lang], box = document.getElementById('regionList');
+  if (!box) return;
+  const nq = norm(q.trim());
+  const items = REGION_LIST.map((r, i) => ({ r, i })).filter(({ r }) => !nq || norm(r.n + ' ' + r.ar + ' ' + r.a).includes(nq));
+  if (!items.length) { box.innerHTML = `<p class="place-sub" style="margin-top:10px;">${t.regionEmpty}</p>`; return; }
+  box.innerHTML = items.map(({ r, i }) => {
+    const title = (lang !== 'fr' && r.ar) ? `${r.ar} <span class="source" dir="ltr">${r.n}</span>` : r.n;
+    const route = EXTERNAL_LINKS ? `<a class="pill" href="${mapsRoute(regionQ(r))}" target="_blank" rel="noopener">🧭 ${t.routeLabel}</a>` : '';
+    return `<div class="place"><p class="place-name">${title}</p>${r.a ? `<p class="place-sub" dir="auto">${r.a}</p>` : ''}
+      <div class="actions">${route}<button class="pill" onclick="copyText(regionQ(REGION_LIST[${i}]))">📋 ${t.copyLabel}</button></div></div>`;
+  }).join('');
+}
+function regionQ(r) { return 'Centre de santé ' + r.n + (r.a ? ', ' + r.a : '') + ', Maroc'; }
+
+function renderSteps(t, open) {
+  let h = `<details class="card" ${open ? 'open' : ''}><summary>💉 ${t.stepsTitle}</summary><ol class="steps">`;
+  t.steps.forEach(s => { h += `<li>${s}</li>`; });
+  h += `</ol><p class="source">${t.stepsSource}</p>`;
+  h += `<div class="dose-box"><label for="doseStart">🗓️ ${t.doseTitle}</label>
+        <p class="place-sub" style="margin:0 0 6px;">${t.doseStartLabel}</p>
+        <input id="doseStart" class="field" type="date" onchange="doseStart=this.value; calcDoses();">
+        <div id="doseOut" style="margin-top:8px;"></div>
+        <p class="source">${t.doseNote}</p></div>`;
+  return h + `</details>`;
+}
+
+function renderFacts(t) {
+  let h = `<p class="section-title">${t.factsTitle}</p>`;
+  t.facts.forEach(f => { h += `<p class="fact">${f}</p>`; });
+  return h + `<p class="disclaimer">${t.disclaimer}</p>`;
+}
+
+function progress(n) {
+  return `<div class="progress">${[0, 1].map(i => `<span class="${i <= n ? 'done' : ''}"></span>`).join('')}</div>`;
+}
+
+// ─── RENDER ──────────────────────────────────────────────────────────────
+function render(scrollTop = true) {
+  const t = T[lang];
+  document.documentElement.lang = lang === 'fr' ? 'fr' : 'ar';
+  document.documentElement.dir = t.dir;
+  document.title = t.brand;
+  document.getElementById('brandName').textContent = t.brand;
+  document.getElementById('sosText').textContent = t.sos;
+  ['ar', 'da', 'fr'].forEach(k => document.getElementById('btn' + k[0].toUpperCase() + k[1]).classList.toggle('active', lang === k));
+
+  let h = '';
+  if (screen === 'home') {
+    h += `<h1>${t.title}</h1><p class="subtitle">${t.subtitle}</p>`;
+    h += `<div class="hero"><p class="hero-label">${t.heroLabel}</p><p class="hero-text">${t.heroText}</p></div>`;
+    h += `<p class="emergency-note">${t.emergencyNote}</p>`;
+    h += `<button class="btn" onclick="go('q1')">${t.startBtn}</button>`;
+    h += renderPlaces(t) + renderSteps(t, false) + renderFacts(t);
+  } else if (screen === 'q1' || screen === 'q2') {
+    const n = screen === 'q1' ? 0 : 1;
+    const opts = n === 0 ? t.q1 : t.q2;
+    h += progress(n);
+    h += `<div class="card"><p class="q-title">${n === 0 ? t.q1Title : t.q2Title}</p><div class="q-options">`;
+    opts.forEach((o, i) => { h += `<button class="q-option" onclick="answer(${n},${i})">${o}</button>`; });
+    h += `</div></div><button class="btn btn-outline" onclick="go('${n === 0 ? 'home' : 'q1'}')">${t.back}</button>`;
+  } else if (screen === 'result') {
+    const lv = riskLevel(a1), r = t.result[lv];
+    h += `<div class="card"><span class="result-badge ${lv}">${r.badge}</span>
+          <p class="result-title">${r.title}</p><p class="result-text">${r.text}</p>
+          <div class="note">${a2 <= 1 ? t.result.noteKnown : t.result.noteUnknown}</div></div>`;
+    h += renderPlaces(t) + renderSteps(t, lv !== 'low');
+    h += `<button class="btn btn-outline" onclick="restart()">${t.restart}</button>`;
+    h += renderFacts(t);
+  }
+  document.getElementById('app').innerHTML = h;
+
+  const rs = document.getElementById('regionSearch');
+  if (rs) { rs.value = regionQuery; filterRegion(regionQuery); }
+  const ds = document.getElementById('doseStart');
+  if (ds) {
+    if (!doseStart) { const d = new Date(); doseStart = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); }
+    ds.value = doseStart; calcDoses();
+  }
+  if (scrollTop) window.scrollTo(0, 0);
+}
+
+function calcDoses() {
+  const t = T[lang], out = document.getElementById('doseOut');
+  if (!out || !doseStart) return;
+  const base = new Date(doseStart + 'T00:00:00');
+  if (isNaN(base)) { out.innerHTML = ''; return; }
+  const fmt = { weekday: 'long', day: 'numeric', month: 'long' };
+  out.innerHTML = [0, 7, 21].map((off, i) => {
+    const d = new Date(base); d.setDate(d.getDate() + off);
+    let label; try { label = d.toLocaleDateString(t.locale, fmt); } catch (e) { label = d.toDateString(); }
+    return `<div class="dose-row"><span>${t.doses[i]}</span><b>${label}</b></div>`;
+  }).join('');
+}
+
+// ─── ACTIONS ─────────────────────────────────────────────────────────────
+function setLang(k) { lang = k; render(false); }
+function go(s) { screen = s; render(); }
+function answer(n, i) { if (n === 0) { a1 = i; go('q2'); } else { a2 = i; go('result'); } }
+function restart() { a1 = a2 = null; go('home'); }
+function setRegion(v) { region = v; render(false); }
+function copyPlace(r, i) { copyText(PLACES[r][i].q); }
+function cityAction(kind) {
+  const t = T[lang];
+  const city = (document.getElementById('cityInput').value || '').trim();
+  const q = (kind === 'er' ? t.qEr : t.qCentre) + (city ? ' ' + city : '');
+  if (EXTERNAL_LINKS) window.open(mapsSearch(q), '_blank', 'noopener');
+  else copyText(q);
+}
+
+render();
+</script>
+</body>
+</html>
